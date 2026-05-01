@@ -1,14 +1,12 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.9'
-        }
-    }
+    agent any
 
     stages {
         stage('Run Python Code') {
             steps {
-                sh 'python app.py'
+                sh '''
+                python3 app.py || python app.py
+                '''
             }
         }
     }
