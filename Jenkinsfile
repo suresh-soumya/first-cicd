@@ -4,7 +4,11 @@ pipeline {
     stages {
         stage('Run Python Code') {
             steps {
-                sh 'python app.py'
+                sh '''
+                apt update
+                apt install -y python3
+                python3 app.py
+                '''
             }
         }
     }
